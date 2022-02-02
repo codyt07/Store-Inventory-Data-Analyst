@@ -1,0 +1,8 @@
+This version is for Team Treehouse Data Analyst Degree. I created the 
+original for Ptython Tech Degree. 
+
+This is a list of changes I have made from the original.
+
+1. Updated inventory.csv 
+2. Added brands.csv
+3. 
