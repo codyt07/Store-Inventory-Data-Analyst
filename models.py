@@ -16,18 +16,18 @@ Base = declarative_base()
 class Brand(Base):
     __tablename__ = 'brands'
     id = Column(Integer, primary_key=True)
-    brand = Column(String)
+    name = Column(String)
 
     def __repr__(self):
-        return f'<User(brand={self.brand})'
+        return f'<User(name={self.name})'
 
     def csv_reader():
         with open('brands.csv', newline='') as brands_csv:
             brands_reader = csv.reader(brands_csv, delimiter=',')
             next(brands_reader)
             rows = list(brands_reader)
-            for row in brands_reader:
-                add_to_db = Brand(brand=row[0])
+            for row in rows:
+                add_to_db = Brand(name=row[0])
                 session.add(add_to_db)
                 session.commit()
 
