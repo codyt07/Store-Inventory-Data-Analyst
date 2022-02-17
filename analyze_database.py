@@ -33,9 +33,27 @@ def analyze_database():
         brand_name_count.append(x)
 
     most_brand = max(brand_name_count, key=brand_name_count.count)
-    number = most_brand[0]
-    result = session.query(Brand).filter(Brand.id == number).first()
-    print(f'''\n *-* The Most Common Brand is: {result.name} *-*''')
+    least_brand = min(brand_name_count, key=brand_name_count.count)
+    most_number = most_brand[0]
+    least_number = least_brand[0]
+    most_result = session.query(Brand).filter(Brand.id == most_number).first()
+    least_result = session.query(Brand).filter(Brand.id == least_number).first()
+    print(f'''\n *-* The Most Common Brand is: {most_result.name} *-*
+                \r-*- The Least CommonBrand is: {least_result.name} -*-''')
 
-    input("\nPress Enter to return back to the menu!")
+    #Low Quantity
+    quantity = []
+    for x in session.query(Product.quantity).all():
+        quantity.append(x)
+    low_quantity = min(quantity)
+    low_quantity_num = low_quantity[0]
+    low_quantity_query = session.query(Product).filter(Product.quantity == low_quantity_num).all()
+    print(f'''\nProduct(s) with the lowest quantity are: ''') 
+    for all in low_quantity_query:
+        print(f'''\nProduct Name: {all.name}
+                \rProduct Quantity: {all.quantity}''')
+
+    input('''\nPress Enter to return back to the menu! 
+            \r''')
     app.menu()
+

@@ -10,7 +10,7 @@ def backup_csv():
     # For Product Database
     with open('backup_inventory.csv', 'a') as csvfile:
         field_names = ['product_name', 'product_price', 'product_quantity',
-                        'date_updated', 'brand_id']
+                        'date_updated', 'brand_name']
         backup_writer = csv.DictWriter(csvfile, fieldnames=field_names)
         backup_writer.writeheader()
 
@@ -26,13 +26,14 @@ def backup_csv():
                 'product_price': product_price,
                 'product_quantity': product_quantity,
                 'date_updated': date_updated,
-                'brand_id': rows.brand_id})
+                'brand_name': rows.brand.name})
 
     # For Brand Database
     with open('backup_brand.csv', 'a') as csvfile:
         brand_field_names = ['brand_id', 'brand_name']
         brand_backup = csv.DictWriter(csvfile, fieldnames=brand_field_names)
         brand_backup.writeheader()
+    
     # Pull Brand Database
         brand_info = session.query(Brand)
         for rows in brand_info:

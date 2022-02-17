@@ -11,5 +11,4 @@ def add_product():
     product_date = input('Enter Date (MM-DD-YYYY) (10-27-2021): ')
     date_verified = update_product.date_checker(product_date)
     brand_name_check = update_product.brand_name()
-    print(brand_name_check)
     update_product.confirmation(verified_product, price_verified, quantity_verified, date_verified, brand_name_check)

@@ -269,8 +269,8 @@ def confirmation(verified_product, price_verified, quantity_verified,
             \rPrice: {price_verified / 100}
             \rQuantity: {quantity_verified}
             \rDate: {date}''')
-    if brand_name_check:
-            print('''\rBrand: {brand_name_check.name}''')
+    if brand_name_check != NULL:
+            print(f'''\rBrand: {brand_name_check.name}''')
     else:
             print('''\rOther Brand (Will go in as NULL)''')
     confirm = input('''
